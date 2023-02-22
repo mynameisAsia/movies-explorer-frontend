@@ -1,0 +1,13 @@
+.popup__list-item {
+    margin: 28px 0 0;
+}
+
+.popup__list-item:first-of-type {
+    margin: 0;
+}
+
+@media screen and (max-width: 431px) {
+    .popup__list-item {
+        margin-top: 24px;
+    }
+}

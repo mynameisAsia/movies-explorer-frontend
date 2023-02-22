@@ -1,0 +1,36 @@
+.student__name {
+    margin: 66px 0 0 0;
+    width: 600px;
+    font-size: 50px;
+    line-height: 1.16;
+    font-weight: 400;
+    letter-spacing: -.04em;
+}
+
+
+@media screen and (max-width: 1028px) {
+    .student__name {
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 871px) {
+    .student__name {
+        width: 364px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .student__name {
+        font-size: 40px;
+        line-height: 1;
+    }
+}
+
+@media screen and (max-width: 431px) {
+    .student__name {
+        width: 292px;
+        margin-top: 40px;
+        font-size: 30px;
+    }
+}

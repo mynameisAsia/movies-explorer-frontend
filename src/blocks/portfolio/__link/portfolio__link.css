@@ -1,0 +1,22 @@
+.portfolio__link {
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -.04em;
+    transition: opacity 0.2s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portfolio__link:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 431px) {
+    .portfolio__link {
+        font-size: 18px;
+    }
+}

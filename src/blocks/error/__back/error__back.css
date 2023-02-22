@@ -1,0 +1,12 @@
+.error__back {
+    font-size: 14px;
+    line-height: 1.21;
+    font-weight: 400;
+    text-decoration: none;
+    color: black;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.error__back:hover {
+    opacity: 0.6;
+}

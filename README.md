@@ -1,2 +1,5 @@
 # movies-explorer-frontend
 Репозиторий для фронтенд части дипломной работы
+
+Ссылка на макет:  https://docviewer.yandex.ru/view/243291794/?*=1PSxIt%2FsL7tn7twYd70epjqg5UJ7InVybCI6InlhLWRpc2s6Ly8vZGlzay9EaXBsb21hIChDb3B5KS5maWciLCJ0aXRsZSI6IkRpcGxvbWEgKENvcHkpLmZpZyIsIm5vaWZyYW1lIjpmYWxzZSwidWlkIjoiMjQzMjkxNzk0IiwidHMiOjE2NzY2NDYyMzAzOTAsInl1IjoiNTYyMTkxMTYxNjUxNTA1MzczIn0%3D
+

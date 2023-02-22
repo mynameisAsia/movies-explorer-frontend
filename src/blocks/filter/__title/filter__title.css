@@ -1,0 +1,12 @@
+.filter__title {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 541px) {
+    .filter__title {
+        font-size: 11px;
+    }
+}

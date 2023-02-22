@@ -1,0 +1,28 @@
+.project__description {
+    margin-top: 70px;
+    max-width: 550px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1.21;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 684px) {
+    .project__description {
+        font-size: 25px;
+    }
+}
+
+
+@media screen and (max-width: 577px) {
+    .project__description {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 431px) {
+    .project__description {
+        max-width: 284px;
+        font-size: 18px;
+    }
+}

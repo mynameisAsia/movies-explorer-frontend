@@ -1,0 +1,22 @@
+.header__signin-div {
+    width: 76px;
+    height: 32px;
+    background-color: #000000;
+    border-radius: 3px;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header__signin-div:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 431px) {
+    .header__signin-div {
+        width: 54px;
+        height: 26px;
+    }
+}

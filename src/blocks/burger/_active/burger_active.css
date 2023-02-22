@@ -1,0 +1,6 @@
+.burger_active {
+    display: flex;
+    width: 22px;
+    height: 20.5px;
+    padding-right: 18px;
+}

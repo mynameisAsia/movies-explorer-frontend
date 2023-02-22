@@ -1,0 +1,9 @@
+.movies-card {
+    margin: 0 auto;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    max-width: 364px;
+    display: flex;
+    flex-direction: column;
+}

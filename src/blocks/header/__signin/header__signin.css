@@ -1,0 +1,14 @@
+.header__signin {
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+@media screen and (max-width: 431px) {
+    .header__signin {
+        font-size: 10px;
+    }
+}

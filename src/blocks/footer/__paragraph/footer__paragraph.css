@@ -1,0 +1,14 @@
+.footer__paragraph {
+    margin: 79px auto 0;
+    text-align: center;
+    color: #A0A0A0;
+    font-size: 13px;
+    line-height: 1.21;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 431px) {
+    .footer__paragraph {
+        font-size: 12px;
+    }
+}
