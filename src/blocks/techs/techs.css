@@ -1,0 +1,16 @@
+.techs {
+    margin: 0 auto;
+    padding: 100px 0;
+}
+
+@media screen and (max-width: 769px) {
+    .techs {
+        padding: 90px 0;
+    }
+}
+
+@media screen and (max-width: 577px) {
+    .techs {
+        padding: 70px 0;
+    }
+}

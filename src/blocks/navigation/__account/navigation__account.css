@@ -1,0 +1,21 @@
+.navigation__account {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    line-height: 1.1;
+    font-weight: 500;
+    transition: opacity 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.navigation__account:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 769px) {
+    .navigation__account {
+        display: none;
+    }
+}

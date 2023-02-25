@@ -1,0 +1,17 @@
+.promo__more-div {
+    margin: 0;
+    padding: 0;
+    width: 129px;
+    height: 36px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1028px) {
+    .promo__more-div {
+        margin: 0 auto;
+    }
+}

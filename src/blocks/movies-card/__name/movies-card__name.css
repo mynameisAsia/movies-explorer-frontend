@@ -1,0 +1,8 @@
+.movies-card__name {
+    margin: 0;
+    max-width: 250px;
+    font-size: 13px;
+    line-height: 1.21;
+    font-weight: 500;
+    text-overflow: ellipsis;
+}

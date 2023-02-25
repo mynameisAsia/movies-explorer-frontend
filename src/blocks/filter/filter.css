@@ -1,0 +1,11 @@
+.filter {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 541px) {
+    .filter {
+        margin-top: 42px;
+    }
+}

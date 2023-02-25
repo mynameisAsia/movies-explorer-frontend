@@ -1,0 +1,12 @@
+.student__wrapper {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #000000;
+}
+
+@media screen and (max-width: 687px) {
+    .student__wrapper {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+};

@@ -1,0 +1,24 @@
+.promo__wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 75px 0;
+}
+
+@media screen and (max-width: 1028px) {
+    .promo__wrapper {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .promo__wrapper {
+        padding: 140px 0 76px;
+    }
+}
+
+@media screen and (max-width: 577px) {
+    .promo__wrapper {
+        padding: 70px 0 30px;
+    }
+}

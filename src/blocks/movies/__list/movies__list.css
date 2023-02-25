@@ -1,0 +1,29 @@
+.movies__list {
+    margin: 119px auto 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px 30px;
+    list-style: none;
+}
+
+@media screen and (max-width: 1023px) {
+    .movies__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .movies__list {
+        margin-top: 132px;
+        gap: 50px 30px;
+    }
+}
+
+@media screen and (max-width: 541px) {
+    .movies__list {
+        margin-top: 91px;
+        gap: 39px 30px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

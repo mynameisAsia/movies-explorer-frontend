@@ -1,0 +1,21 @@
+.filter__switch {
+	position: relative;	
+	width: 36px;	
+	height: 20px;
+	border-radius: 20px;
+	transition: .2s;
+    cursor: pointer;
+    box-shadow: 3px 3px 8px #E8E8E8;
+}
+
+.filter__switch:before {
+	content: '';
+	position: absolute;
+	top: 2px;
+	right: 2px;	
+	width: 16px;	
+	height: 16px;
+	border-radius: 50%;
+	background: #2BE080;
+	transition: .3s;
+}

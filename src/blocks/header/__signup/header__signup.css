@@ -1,0 +1,21 @@
+.header__signup {
+    margin-right: 30px;
+    color: #000000;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.header__signup:hover {
+    opacity: 0.6;
+}
+
+
+@media screen and (max-width: 431px) {
+    .header__signup {
+        margin-right: 14px;
+        font-size: 10px;
+    }
+}

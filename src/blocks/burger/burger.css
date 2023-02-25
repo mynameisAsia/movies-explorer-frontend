@@ -1,0 +1,26 @@
+.burger {
+    display: none;
+}
+
+@media screen and (max-width: 769px) {
+    .burger {
+        padding: 0;
+        padding-right: 8px;
+        display: block;
+        width: 28px;
+        height: 23px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+}
+
+@media screen and (max-width: 431px) {
+    .burger {
+        width: 22px;
+        height: 20.5px;
+        padding-right: 10px;
+    }
+}

@@ -1,0 +1,14 @@
+.footer__wrapper {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #E8E8E8;
+}
+
+@media screen and (max-width: 431px) {
+    .footer__wrapper {
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+}

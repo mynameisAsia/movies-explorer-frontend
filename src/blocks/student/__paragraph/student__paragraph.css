@@ -1,0 +1,35 @@
+.student__paragraph {
+    margin: 18px 0 0 0;
+    width: 600px;
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 1028px) {
+    .student__paragraph {
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 871px) {
+    .student__paragraph {
+        width: 364px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .student__paragraph {
+        margin-top: 16px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+}
+
+@media screen and (max-width: 431px) {
+    .student__paragraph {
+        width: 292px;
+        margin-top: 20px;
+        font-size: 11px;
+    }
+}

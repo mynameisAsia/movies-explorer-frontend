@@ -1,0 +1,15 @@
+.project__frontend {
+    background-color: #F2F2F2;
+    text-align: center;
+    padding: 9px 0;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 431px) {
+    .project__frontend {
+        font-size: 11px;
+        padding: 11px 0;
+    }
+}

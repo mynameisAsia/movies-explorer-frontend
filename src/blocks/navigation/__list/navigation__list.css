@@ -1,0 +1,13 @@
+.navigation__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 0 0 44px;
+}
+
+@media screen and (max-width: 769px) {
+    .navigation__list {
+        display: none;
+    }
+}
