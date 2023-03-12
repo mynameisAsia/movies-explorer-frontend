@@ -1,7 +1,10 @@
 .button_theme_save {
     height: 21px;
-    background-color: #F9F9F9;
+    width: 72px;
+    background-image: url(../../../images/save-button.png);
     border-radius: 30px;
+    background-position: center;
+    background-size: cover;
     text-align: center;
     font-size: 10px;
     line-height: 0.9;

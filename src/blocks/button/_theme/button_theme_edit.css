@@ -1,20 +1,16 @@
-.profile__edit {
+.button_theme_edit {
     margin: 0 0 16px;
     text-decoration: none;
+    background-color: transparent;
     color: black;
     font-size: 13px;
     line-height: 1.21;
     font-weight: 400;
     text-align: center;
-    transition: opacity 0.2s ease-in-out;
-}
-
-.profile__edit:hover {
-    opacity: 0.6;
 }
 
 @media screen and (max-width: 431px) {
-    .profile__edit {
+    .button_theme_edit {
         font-size: 12px;
     }
 }

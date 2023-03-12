@@ -1,6 +1,7 @@
-.profile__logout {
+.button_theme_logout {
     margin: 0;
     text-decoration: none;
+    background-color: transparent;
     color: #FF4062;
     font-size: 13px;
     line-height: 1.21;
@@ -9,12 +10,12 @@
     transition: opacity 0.2s ease-in-out;
 }
 
-.profile__logout:hover {
+.button_theme_logout:hover {
     opacity: 0.6;
 }
 
 @media screen and (max-width: 431px) {
-    .profile__logout {
+    .button_theme_logout {
         font-size: 12px;
     }
 }
