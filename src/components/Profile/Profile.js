@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Navigation";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import useValidation from "../../hooks/useValidation";
 
-function Profile ({ onEditProfile, onLogout }) {
+function Profile ({ onEditProfile, onLogout, isBurgerClicked, openMobileMenu }) {
 
     const currentUser = React.useContext(CurrentUserContext);
     const [loading, setLoading] = useState(false);
@@ -27,7 +27,7 @@ function Profile ({ onEditProfile, onLogout }) {
 
     return (
         <>
-        <Navigation />
+        <Navigation isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />
         <section className="profile">
             <div className="profile__wrapper">
                 <h1 className="profile__title">Привет, {currentUser.data.name}!</h1>

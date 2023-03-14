@@ -18,6 +18,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [isBurgerClicked, setIsBurgerClicked] = React.useState(false);
 
   useEffect(() => {
       if (loggedIn) {
@@ -128,6 +129,12 @@ function App() {
         .catch((err) => console.log(err));
   };
 
+  function handleClickBurgerMenu() {
+    if (loggedIn) {
+        setIsBurgerClicked(!isBurgerClicked);
+    }
+  };
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -148,6 +155,8 @@ function App() {
               loggedIn={loggedIn}
               onEditProfile={handleEditProfileClick}
               onLogout={handleLogout}
+              isBurgerClicked={isBurgerClicked}
+              openMobileMenu={handleClickBurgerMenu}
             >
             </ProtectedRoute>
             }> 
@@ -165,6 +174,8 @@ function App() {
               savedMovies={savedMovies}
               onCardLike={handleCardLike}
               onCardDelete={handleCardDelete}
+              isBurgerClicked={isBurgerClicked}
+              openMobileMenu={handleClickBurgerMenu}
             >
             </ProtectedRoute>
             }>
@@ -174,7 +185,10 @@ function App() {
               loggedIn={loggedIn} 
               component={SavedMovies}
               savedMovies={savedMovies}
-              onCardDelete={handleCardDelete}>
+              onCardDelete={handleCardDelete}
+              isBurgerClicked={isBurgerClicked}
+              openMobileMenu={handleClickBurgerMenu}
+            >
             </ProtectedRoute>
             }>
           </Route>

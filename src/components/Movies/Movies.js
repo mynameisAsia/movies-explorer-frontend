@@ -7,12 +7,13 @@ import Footer from '../Footer/Footer';
 import Preloader from "../Preloader/Preloader";
 import * as api from '../../utils/MoviesApi';
 
-function Movies ({ onCardLike, onCardDelete, savedMovies }) {
+function Movies ({ onCardLike, onCardDelete, savedMovies, isBurgerClicked, openMobileMenu }) {
 
     const [searchValue, setSearchValue] = useState(localStorage.getItem('searchValue') || '');
     const [loading, setLoading] = useState(false);
     const [allMovies, setAllMovies] = useState(JSON.parse(localStorage.getItem('allMovies')) || []);
     const [filteredMovies, setFilteredMovies] = useState([]);
+    const [searchError, setSearchError] = useState('');
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(JSON.parse(localStorage.getItem('isCheckboxChecked')) || false)
 
     useEffect(() => {
@@ -22,6 +23,10 @@ function Movies ({ onCardLike, onCardDelete, savedMovies }) {
     useEffect(() => {
         localStorage.setItem('allMovies', JSON.stringify(allMovies));
     }, [allMovies]);
+
+    useEffect(() => {
+        localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
+    }, [filteredMovies]);
 
     useEffect(() => {
         localStorage.setItem('isCheckboxChecked', isCheckboxChecked);
@@ -34,9 +39,19 @@ function Movies ({ onCardLike, onCardDelete, savedMovies }) {
         )
     };
 
-    function handleSearchMovies() {
+    function handleSearchMovies(searchValue) {
 
         if (!searchValue) {
+            setSearchError('Нужно ввести ключевое слово');
+            return;
+        }
+
+        if (allMovies.length > 0) {
+            setLoading(true);
+            setAllMovies([]);
+            const filteredMovies = filterMovies(allMovies);
+            filteredMovies.length === 0 ? setSearchError('Ничего не найдено') : setFilteredMovies(filteredMovies);
+            setLoading(false);
             return;
         }
         
@@ -47,13 +62,15 @@ function Movies ({ onCardLike, onCardDelete, savedMovies }) {
                 const filteredMovies = filterMovies(res);
                 setFilteredMovies(filteredMovies);
             })
-            .catch((err) => console.log(err))
+            .catch((err) => {
+                console.log(err)
+                setSearchError(err.message || 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')})
             .finally(() => setLoading(false));
     }
 
     return (
         <section className="movies">
-            <Navigation />
+            <Navigation isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />
             <SearchForm
                 searchValue={searchValue}
                 setSearchValue={setSearchValue} 
@@ -64,6 +81,7 @@ function Movies ({ onCardLike, onCardDelete, savedMovies }) {
             {!loading ? (<MoviesCardList 
                 cards={filteredMovies}
                 savedMovies={savedMovies}
+                searchError={searchError}
                 onCardLike={onCardLike}
                 onCardDelete={onCardDelete}
             />) : (<Preloader />)}

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import MenuBurger from "../MenuBurger/MenuBurger";
-import logo from '../../images/logo.svg'
+import logo from '../../images/logo.svg';
 import MobileNavBar from "../MobileNavBar/MobileNavBar";
 
-function Navigation () {
+function Navigation ({ isBurgerClicked, openMobileMenu }) {
     return (
         <div className="navigation">
             <div className="content-wrapper">
@@ -22,8 +22,8 @@ function Navigation () {
                         Аккаунт
                         <div className="navigation__icon navigation__icon-div"></div>
                     </NavLink>
-                    <MenuBurger />
-                    <MobileNavBar />
+                    <MenuBurger isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />
+                    <MobileNavBar isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />
                 </div>
             </div>
         </div>

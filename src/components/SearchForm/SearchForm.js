@@ -3,8 +3,7 @@ import FilterCheckBox from "../FilterCheckBox/FilterCheckBox";
 import find from '../../images/find.png';
 import findGrey from '../../images/find-grey.png';
 
-function SearchForm ({ searchValue, setSearchValue, onSearchMovies }) {
-
+function SearchForm ({ searchValue, setSearchValue, onSearchMovies, isCheckboxChecked, setIsCheckboxChecked }) {
     
     function handleSubmit (e) {
         e.preventDefault();
@@ -32,7 +31,7 @@ function SearchForm ({ searchValue, setSearchValue, onSearchMovies }) {
                         <img src={find} alt='Кнопка поиска' />
                     </button>
                 </form>
-                <FilterCheckBox />
+                <FilterCheckBox isCheckboxChecked={isCheckboxChecked} setIsCheckboxChecked={setIsCheckboxChecked} />
             </div>
         </section>
     )

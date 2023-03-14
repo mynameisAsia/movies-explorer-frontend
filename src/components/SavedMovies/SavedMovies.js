@@ -7,21 +7,17 @@ import Preloader from "../Preloader/Preloader";
 import * as api from '../../utils/MoviesApi';
 
 
-function SavedMovies ({ savedMovies, onCardDelete }) {
+function SavedMovies ({ savedMovies, onCardDelete, isBurgerClicked, openMobileMenu }) {
 
     const [searchValue, setSearchValue] = useState(localStorage.getItem('searchValue') || '');
     const [loading, setLoading] = useState(false);
-    const [allMovies, setAllMovies] = useState(JSON.parse(localStorage.getItem('allMovies')) || []);
     const [filteredMovies, setFilteredMovies] = useState([]);
+    const [searchError, setSearchError] = useState('');
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(JSON.parse(localStorage.getItem('isCheckboxChecked')) || false)
 
     useEffect(() => {
         localStorage.setItem('searchValue', searchValue);
     }, [searchValue]);
-
-    useEffect(() => {
-        localStorage.setItem('allMovies', JSON.stringify(allMovies));
-    }, [allMovies]);
 
     useEffect(() => {
         localStorage.setItem('isCheckboxChecked', isCheckboxChecked);
@@ -47,14 +43,22 @@ function SavedMovies ({ savedMovies, onCardDelete }) {
     function handleSearchMovies(searchValue) {
 
         if (!searchValue) {
+            setSearchError('Нужно ввести ключевое слово');
             return;
         }
 
-        console.log(searchValue);
+        if (savedMovies.length > 0) {
+            setLoading(true);
+            setFilteredMovies([]);
+            const filteredMovies = filterMovies(savedMovies);
+            filteredMovies.length === 0 ? setSearchError('Ничего не найдено') : setFilteredMovies(filteredMovies);
+            setLoading(false);
+            return;
+        }
+
         setLoading(true);
         api.getMovies()
             .then((res) => {
-                setAllMovies(res);
                 const filteredMovies = filterMovies(res);
                 setFilteredMovies(filteredMovies);
             })
@@ -64,7 +68,7 @@ function SavedMovies ({ savedMovies, onCardDelete }) {
 
     return (
         <section className="saved-movies">
-            <Navigation />
+            <Navigation isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />
             <SearchForm 
                 searchValue={searchValue}
                 setSearchValue={setSearchValue} 
@@ -75,6 +79,7 @@ function SavedMovies ({ savedMovies, onCardDelete }) {
             {!loading ? (<MoviesCardList 
                 cards={filteredMovies}
                 savedMovies={savedMovies}
+                searchError={searchError}
                 onCardDelete={onCardDelete}
             />) : (<Preloader />)}
             <Footer />

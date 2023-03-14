@@ -1,27 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from '../../images/logo.svg';
 import { Link } from "react-router-dom";
+import useValidation from "../../hooks/useValidation";
 
 function Login ({ onLogin }) {
 
-    const [data, setData] = React.useState({
-        email: "",
-        password: "",
-    });
+    const { values, errors, handleChange, setValues, isFormValid } = useValidation();
 
-    function handleChange(e) {
-        const { name, value } = e.target;
-        setData((data) => ({ ...data, [name]: value }));
-    }
+    useEffect(() => {
+        setValues({ email: '', password: '' })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (!data.password || !data.email) {
-            return;
-        }
-
-        onLogin(data);
+        onLogin({
+            email: values.email,
+            password: values.password
+        });
     }
 
     return (
@@ -31,26 +28,32 @@ function Login ({ onLogin }) {
                     <img src={logo} alt='logo' className="logo" />
                 </Link>
                 <h1 className="auth-form__title">Рады видеть!</h1>
-                <form className="auth-form__form" onSubmit={handleSubmit}>
+                <form id="form" className="auth-form__form" onSubmit={handleSubmit}>
                     <label className="auth-form__label">Email</label>
                     <input 
                         className="auth-form__input" 
                         type="email"
                         name="email"
-                        value={data.email}
+                        value={values.email || ''}
                         onChange={handleChange}
                         required
                     ></input>
+                    <span className="auth-form__input-error">{errors.email}</span>
                     <label className="auth-form__label">Пароль</label>
                     <input 
                         className="auth-form__input" 
                         type="password"
                         name="password"
-                        value={data.password}
+                        value={values.password || ''}
                         onChange={handleChange}
                         required
                     ></input>
-                    <button className="button button_theme_auth" type="submit">Войти</button>
+                    <span className="auth-form__input-error">{errors.password}</span>
+                    <button 
+                        className="button button_theme_auth" 
+                        type="submit"
+                        disabled={!isFormValid ? true : false}
+                    >Войти</button>
                     <Link to='/signup' className='auth-form__link'><span className='auth-form__link_grey'>Еще не зарегистрированы? </span>Регистрация</Link>
                 </form>
             </div>

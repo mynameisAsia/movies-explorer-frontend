@@ -2,12 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import MenuBurger from "../MenuBurger/MenuBurger";
 
-function MobileNavBar () {
+function MobileNavBar ({ isBurgerClicked, openMobileMenu }) {
     return (
-        <div className="popup">       
+        <div className={`popup ${isBurgerClicked && 'popup_opened'}`}>       
             <div className="popup__overlay"></div>
-            <MenuBurger />
             <div className="popup__content">
+                <MenuBurger isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />
                 <nav className="popup__nav">
                     <ul className="popup__links">
                         <li className="popup__list-item"><NavLink className="popup__link" to='/'>Главная</NavLink></li>

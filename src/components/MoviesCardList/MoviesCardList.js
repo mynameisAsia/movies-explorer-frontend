@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList ({ cards, onCardLike, onCardDelete, savedMovies }) {
+function MoviesCardList ({ cards, searchError, onCardLike, onCardDelete, savedMovies }) {
     
     const [shownMovies, setShownMovies] = useState(0);
 
@@ -48,7 +48,7 @@ function MoviesCardList ({ cards, onCardLike, onCardDelete, savedMovies }) {
         <section className="movies">
             <div className="content-wrapper">
                 <ul className="movies__list">
-                    {cards.slice(0, shownMovies).map((card) => (
+                    {cards.length > 0? (cards.slice(0, shownMovies).map((card) => (
                         <MoviesCard
                             key={card._id} 
                             card={card}
@@ -57,7 +57,7 @@ function MoviesCardList ({ cards, onCardLike, onCardDelete, savedMovies }) {
                             saved={getSavedMovieCard(savedMovies, card)}
                             savedMovies={savedMovies}
                         />
-                    ))}
+                    ))) : (<h3 className="movies__error">{searchError}</h3>)}
                 </ul>
                 {cards.length > shownMovies ? (
                     <button className="button button_theme_movies" type="submit" onClick={showMore}>Еще</button>

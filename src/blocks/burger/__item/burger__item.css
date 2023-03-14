@@ -4,10 +4,3 @@
     width: 100%;
     background-color: black;
 }
-
-@media screen and (max-width: 431px) {
-    .burger__item {
-        width: 22px;
-        height: 2.5px;
-    }
-}

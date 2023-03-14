@@ -57,6 +57,7 @@
 @import url(./blocks/error/__back/error__back.css);
 @import url(./blocks/error/__wrapper/error__wrapper.css);
 @import url(./blocks/movies/__list/movies__list.css);
+@import url(./blocks/movies/__error/movies__error.css);
 @import url(./blocks/button/_theme/button_theme_movies.css);
 @import url(./blocks/movies-card/__pic/movies-card__pic.css);
 @import url(./blocks/movies-card/movies-card.css);
@@ -117,3 +118,4 @@
 @import url(./blocks/popup/__nav/popup__nav.css);
 @import url(./blocks/button/_saved/button_saved.css);
 @import url(./blocks/button/_theme/button_theme_delete.css);
+@import url(./blocks/auth-form/__input-error/auth-form__input-error.css);
