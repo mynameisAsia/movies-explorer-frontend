@@ -4,20 +4,20 @@ import find from '../../images/find.png';
 import findGrey from '../../images/find-grey.png';
 
 function SearchForm ({ searchValue, setSearchValue, onSearchMovies, isCheckboxChecked, setIsCheckboxChecked }) {
-    
+
     function handleSubmit (e) {
         e.preventDefault();
         onSearchMovies(searchValue);
     };
 
     const handleChange = e => {
-        setSearchValue(e.target.value)
-    }
+        setSearchValue(e.target.value);
+    };
 
     return (
         <section className="search-form">
             <div className="content-wrapper">
-                <form className="search-form__form" onClick={handleSubmit}>
+                <form className="search-form__form" onSubmit={handleSubmit}>
                     <img className="search-form__image" src={findGrey} alt="Найти" />
                     <input 
                         className='search-form__input' 

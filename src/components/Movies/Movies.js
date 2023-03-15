@@ -1,13 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from '../Footer/Footer';
 import Preloader from "../Preloader/Preloader";
 import * as api from '../../utils/MoviesApi';
+import Header from "../Header/Header";
 
-function Movies ({ onCardLike, onCardDelete, savedMovies, isBurgerClicked, openMobileMenu }) {
+function Movies ({ loggedIn, onCardLike, onCardDelete, savedMovies, isBurgerClicked, openMobileMenu }) {
 
     const [searchValue, setSearchValue] = useState(localStorage.getItem('searchValue') || '');
     const [loading, setLoading] = useState(false);
@@ -31,6 +31,16 @@ function Movies ({ onCardLike, onCardDelete, savedMovies, isBurgerClicked, openM
     useEffect(() => {
         localStorage.setItem('isCheckboxChecked', isCheckboxChecked);
     }, [isCheckboxChecked]);
+
+    function filterDuration(movies) {
+        return movies.filter((movie) => movie.duration <= 40);
+    };
+
+    useEffect(() => {
+        const moviesList = filterMovies(allMovies, searchValue);
+        setFilteredMovies(isCheckboxChecked ? filterDuration(moviesList) : moviesList);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [allMovies, isCheckboxChecked, searchValue]);
 
     function filterMovies(movies) {
         return movies.filter((movie) =>
@@ -70,7 +80,7 @@ function Movies ({ onCardLike, onCardDelete, savedMovies, isBurgerClicked, openM
 
     return (
         <section className="movies">
-            <Navigation isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />
+            <Header loggedIn={loggedIn} isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />
             <SearchForm
                 searchValue={searchValue}
                 setSearchValue={setSearchValue} 

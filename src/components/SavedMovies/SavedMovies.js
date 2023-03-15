@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navigation from "../Navigation/Navigation";
+import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
@@ -7,21 +7,13 @@ import Preloader from "../Preloader/Preloader";
 import * as api from '../../utils/MoviesApi';
 
 
-function SavedMovies ({ savedMovies, onCardDelete, isBurgerClicked, openMobileMenu }) {
+function SavedMovies ({ loggedIn, savedMovies, onCardDelete, isBurgerClicked, openMobileMenu }) {
 
-    const [searchValue, setSearchValue] = useState(localStorage.getItem('searchValue') || '');
+    const [searchValue, setSearchValue] = useState('');
     const [loading, setLoading] = useState(false);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [searchError, setSearchError] = useState('');
-    const [isCheckboxChecked, setIsCheckboxChecked] = useState(JSON.parse(localStorage.getItem('isCheckboxChecked')) || false)
-
-    useEffect(() => {
-        localStorage.setItem('searchValue', searchValue);
-    }, [searchValue]);
-
-    useEffect(() => {
-        localStorage.setItem('isCheckboxChecked', isCheckboxChecked);
-    }, [isCheckboxChecked]);
+    const [isCheckboxChecked, setIsCheckboxChecked] = useState(false)
 
     function filterDuration(movies) {
         return movies.filter((movie) => movie.duration <= 40);
@@ -68,7 +60,7 @@ function SavedMovies ({ savedMovies, onCardDelete, isBurgerClicked, openMobileMe
 
     return (
         <section className="saved-movies">
-            <Navigation isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />
+            <Header loggedIn={loggedIn} isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />
             <SearchForm 
                 searchValue={searchValue}
                 setSearchValue={setSearchValue} 

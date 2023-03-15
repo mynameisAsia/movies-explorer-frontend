@@ -1,8 +1,8 @@
 .movies-card__pic {
     max-width: 100%;
-    height: 100%;
-    max-width: 360px;
-    max-height: 201px;
+    max-height: 100%;
+    width: 360px;
+    height: 201px;
     border-radius: 6px;
     object-fit: cover;
 }

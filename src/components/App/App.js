@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as api from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import Header from '../Header/Header';
 import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
 import Error from "../Error/Error";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -85,21 +87,23 @@ function App() {
         .then((res) => {
           setCurrentUser(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err)
+        });
   };
 
   function handleLogout () {
       setLoggedIn(false);
-      localStorage.removeItem('jwt');
-      navigate('/')
+      localStorage.clear();
+      navigate('/');
   };
 
   function handleCardLike (card) {
 
-      const image = `https://api.nomoreparties.co/${card.image.url}`
-      const thumbnail = `https://api.nomoreparties.co/${card.image.formats.thumbnail.url}`
-      const movieId = card.id
-      const { country, director, duration, year, description, trailerLink, nameRU, nameEN } = card
+      const image = `https://api.nomoreparties.co/${card.image.url}`;
+      const thumbnail = `https://api.nomoreparties.co/${card.image.formats.thumbnail.url}`;
+      const movieId = card.id;
+      const { country, director, duration, year, description, trailerLink, nameRU, nameEN } = card;
 
       api.saveMovie({
         country,
@@ -107,15 +111,15 @@ function App() {
         duration,
         year,
         description,
-        trailerLink,
-        nameRU,
-        nameEN,
         image,
+        trailerLink,
         thumbnail,
         movieId,
+        nameRU,
+        nameEN,
       })
-        .then((res) => {
-          setSavedMovies([res, ...savedMovies]);
+        .then(({ data }) => {
+          setSavedMovies((savedMovies) => [...savedMovies, data]);
         })
         .catch((err) => console.log(err));
   };
@@ -141,12 +145,12 @@ function App() {
         <Routes>
           <Route 
             path='/signin' 
-            element={<Login onLogin={handleLogin} />}
+            element={<ProtectedRoute component={Login} loggedIn={loggedIn} onLogin={handleLogin} onlyUnAuth />}
           >
           </Route>
           <Route 
             path='/signup' 
-            element={<Register onRegister={handleRegister} />}
+            element={<ProtectedRoute component={Register} loggedIn={loggedIn} onRegister={handleRegister} onlyUnAuth/>}
           > 
           </Route>
           <Route path='/profile' element={
@@ -162,7 +166,12 @@ function App() {
             }> 
           </Route>
           <Route exact path='/' element={
-            <Main />}>
+            <>
+            <Header loggedIn={loggedIn} isBurgerClicked={isBurgerClicked} openMobileMenu={handleClickBurgerMenu} />
+            <Main />
+            <Footer />
+            </>
+          }>
           </Route>
           <Route path='*' element={
             <Error />}>

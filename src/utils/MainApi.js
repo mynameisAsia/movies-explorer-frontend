@@ -32,7 +32,7 @@ export const tokenCheck = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
       headers: {
-        authorization: `Bearer ${token}}`,
+        authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
     })
