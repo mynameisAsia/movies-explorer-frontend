@@ -10,7 +10,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
   }
 
   if (!props.loggedIn && !props.onlyUnAuth) {
-    return <Navigate to='/signin' state={{ from: location }} />
+    return <Navigate to='/' state={{ from: location }} />
   }
 
   return (<Component {...props} />)
