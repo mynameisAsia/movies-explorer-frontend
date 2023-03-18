@@ -12,6 +12,6 @@
 } 
 
 .filter__input:checked + .filter__switch:before {
-	transform: translateX(-15px);
+	transform: translateX(15px);
     background: white;
-} 
+}  
