@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as api from '../../utils/MainApi';
@@ -43,10 +43,8 @@ function App() {
 
   function handleRegister({name, email, password}) {
     api.register(name, email, password)
-        .then((res) => {
-            if (res) {
-                navigate('/signin');
-            }
+        .then(() => {
+          handleLogin({ email, password });
         })
         .catch((err) => {
             console.log(err);
@@ -143,28 +141,6 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Routes>
-          <Route 
-            path='/signin' 
-            element={<ProtectedRoute component={Login} loggedIn={loggedIn} onLogin={handleLogin} onlyUnAuth />}
-          >
-          </Route>
-          <Route 
-            path='/signup' 
-            element={<ProtectedRoute component={Register} loggedIn={loggedIn} onRegister={handleRegister} onlyUnAuth/>}
-          > 
-          </Route>
-          <Route path='/profile' element={
-            <ProtectedRoute 
-              component={Profile}
-              loggedIn={loggedIn}
-              onEditProfile={handleEditProfileClick}
-              onLogout={handleLogout}
-              isBurgerClicked={isBurgerClicked}
-              openMobileMenu={handleClickBurgerMenu}
-            >
-            </ProtectedRoute>
-            }> 
-          </Route>
           <Route exact path='/' element={
             <>
             <Header loggedIn={loggedIn} isBurgerClicked={isBurgerClicked} openMobileMenu={handleClickBurgerMenu} />
@@ -173,9 +149,18 @@ function App() {
             </>
           }>
           </Route>
-          <Route path='*' element={
-            <Error />}>
-          </Route>
+          <Route path='/signin' element={!loggedIn ? <Login onLogin={handleLogin} /> : <Navigate to='/movies' />}></Route>
+          <Route path='/signup' element={!loggedIn ? <Register onRegister={handleRegister} /> : <Navigate to='/movies' />}></Route>
+          <Route path='/profile' element={
+            <ProtectedRoute
+              component={Profile}
+              loggedIn={loggedIn}
+              onEditProfile={handleEditProfileClick}
+              onLogout={handleLogout}
+              isBurgerClicked={isBurgerClicked}
+              openMobileMenu={handleClickBurgerMenu}
+            ></ProtectedRoute>}
+          ></Route>
           <Route path='/movies' element={
             <ProtectedRoute 
               loggedIn={loggedIn}
@@ -186,22 +171,21 @@ function App() {
               isBurgerClicked={isBurgerClicked}
               openMobileMenu={handleClickBurgerMenu}
             >
-            </ProtectedRoute>
-            }>
-          </Route>
+            </ProtectedRoute>}
+          ></Route>
           <Route path='/saved-movies' element={
             <ProtectedRoute 
               loggedIn={loggedIn} 
               component={SavedMovies}
               savedMovies={savedMovies}
               onCardDelete={handleCardDelete}
-              isBurgerClicked={isBurgerClicked}
+              isBurgerClicked={isBurgerClicked} 
               openMobileMenu={handleClickBurgerMenu}
-            >
-            </ProtectedRoute>
-            }>
-          </Route>
-      </Routes>
+              >
+            </ProtectedRoute>}
+          ></Route>
+          <Route path='*' element={<Error />}></Route>
+        </Routes>
       </div>
     </CurrentUserContext.Provider>
   );
