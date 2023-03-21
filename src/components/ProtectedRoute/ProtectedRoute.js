@@ -1,8 +1,24 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ component: Component, ...props }) => {
-  return props.loggedIn ? (<Component {...props} />) : (<Navigate to="/" />);
+  const location = useLocation();
+
+  if (props.loggedIn && props.onlyUnAuth) {
+    if (location.state) {
+      const { from } = location.state || { pathname: '/' }
+      return <Navigate to={from} />
+    } else {
+      <Component {...props} />
+    }
+  }
+
+  if (!props.loggedIn && !props.onlyUnAuth) {
+    return <Navigate to='/' state={{ from: location }} />
+  }
+
+  return (<Component {...props} />)
+  
 };
 
 export default ProtectedRoute;

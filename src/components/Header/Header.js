@@ -25,9 +25,9 @@ function Header ({ loggedIn, isBurgerClicked, openMobileMenu}) {
                     </div>
                 </div>
             </div>
-        </header>) : (<Navigation isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />)}
+        </header>) : (<Navigation loggedIn={loggedIn} isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />)}
         </>
-    )
+        )
 }
 
 export default Header;

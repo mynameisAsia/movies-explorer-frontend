@@ -50,7 +50,7 @@ function MoviesCardList ({ cards, searchError, onCardLike, onCardDelete, savedMo
                 <ul className="movies__list">
                     {cards.length > 0? (cards.slice(0, shownMovies).map((card) => (
                         <MoviesCard
-                            key={card._id} 
+                            key={card.nameRU} 
                             card={card}
                             onCardLike={onCardLike}
                             onCardDelete={onCardDelete}

@@ -29,7 +29,7 @@ function Register ({ onRegister }) {
                     <img src={logo} alt='logo' className="logo" />
                 </Link>
                 <h1 className="auth-form__title">Добро пожаловать!</h1>
-                <form id="form" className="auth-form__form" onSubmit={handleSubmit}>
+                <form id="form" className="auth-form__form" onSubmit={handleSubmit} isFormValid={isFormValid}>
                     <label className="auth-form__label">Имя</label>
                     <input 
                         className="auth-form__input" 
@@ -57,13 +57,15 @@ function Register ({ onRegister }) {
                         className="auth-form__input" 
                         type="password"
                         name="password"
+                        minLength="6"
+                        maxLength="30"
                         value={values.password || ''}
                         onChange={handleChange}
                         required
                     ></input>
                     <span className="auth-form__input-error">{errors.password}</span>
                     <button 
-                        className="button button_theme_register" 
+                        className={isFormValid ? "button button_theme_register" : "button_theme_register button_inactive"} 
                         type="submit"
                         disabled={!isFormValid ? true : false}
                     >Зарегистрироваться</button>

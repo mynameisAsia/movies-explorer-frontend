@@ -7,9 +7,4 @@
     line-height: 1.21;
     font-weight: 500;
     border-radius: 6px;
-    transition: opacity 0.2s ease-in-out;
-}
-
-.button_theme_movies:hover {
-    opacity: 0.6;
 }

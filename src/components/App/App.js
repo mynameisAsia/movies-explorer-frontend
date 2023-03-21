@@ -13,6 +13,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
+import InfoTooltip from '../InfoToolTip/InfoTooltip';
 
 function App() {
 
@@ -21,6 +22,8 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
   const [isBurgerClicked, setIsBurgerClicked] = React.useState(false);
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+  const [tooltipMessage, setTooltipMessage] = useState({ status: '', message: '' });
 
   useEffect(() => {
       if (loggedIn) {
@@ -74,19 +77,24 @@ function App() {
             .then((res) => {
             if (res) {
                 setLoggedIn(true);
+                setCurrentUser(res);
             }
             })
             .catch((err) => console.log(err));
     }
-  }, [navigate]);
+  }, []);
 
   function handleEditProfileClick (data) {
       api.updateUserInfo(data)
         .then((res) => {
+          setIsTooltipVisible(true)
+          setTooltipMessage({ status: 'ok', message: 'Информация обновлена!' })
           setCurrentUser(res);
         })
         .catch((err) => {
-          console.log(err)
+          console.log(err);
+          setIsTooltipVisible(true)
+          setTooltipMessage({ status: 'error', message: err.message || 'Что то пошло не так, попробуйте еще раз' })
         });
   };
 
@@ -144,13 +152,13 @@ function App() {
           <Route exact path='/' element={
             <>
             <Header loggedIn={loggedIn} isBurgerClicked={isBurgerClicked} openMobileMenu={handleClickBurgerMenu} />
-            <Main />
+            <ProtectedRoute loggedIn={loggedIn} component={Main} onlyUnAuth/>
             <Footer />
             </>
           }>
           </Route>
-          <Route path='/signin' element={!loggedIn ? <Login onLogin={handleLogin} /> : <Navigate to='/movies' />}></Route>
-          <Route path='/signup' element={!loggedIn ? <Register onRegister={handleRegister} /> : <Navigate to='/movies' />}></Route>
+          <Route path='/signin' element={!loggedIn? <Login onLogin={handleLogin} /> : <Navigate to='/movies' />}></Route>
+          <Route path='/signup' element={!loggedIn? <Register onRegister={handleRegister} /> : <Navigate to='/movies'/>}></Route>
           <Route path='/profile' element={
             <ProtectedRoute
               component={Profile}
@@ -186,6 +194,7 @@ function App() {
           ></Route>
           <Route path='*' element={<Error />}></Route>
         </Routes>
+        <InfoTooltip isTooltipVisible={isTooltipVisible} tooltipMessage={tooltipMessage} />
       </div>
     </CurrentUserContext.Provider>
   );

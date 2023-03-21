@@ -28,7 +28,7 @@ function Login ({ onLogin }) {
                     <img src={logo} alt='logo' className="logo" />
                 </Link>
                 <h1 className="auth-form__title">Рады видеть!</h1>
-                <form id="form" className="auth-form__form" onSubmit={handleSubmit}>
+                <form id="form" className="auth-form__form" onSubmit={handleSubmit} isFormValid={isFormValid}>
                     <label className="auth-form__label">Email</label>
                     <input 
                         className="auth-form__input" 
@@ -50,7 +50,7 @@ function Login ({ onLogin }) {
                     ></input>
                     <span className="auth-form__input-error">{errors.password}</span>
                     <button 
-                        className="button button_theme_auth" 
+                        className={isFormValid ? "button button_theme_auth" : "button_theme_auth button_inactive"} 
                         type="submit"
                         disabled={!isFormValid ? true : false}
                     >Войти</button>
