@@ -1,0 +1,8 @@
+.tooltip__info {
+    max-width: 300px;
+    margin: auto;
+    font-size: 18px;
+    padding: 10px 15px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #F3C1F8;
+}

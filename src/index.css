@@ -119,3 +119,8 @@
 @import url(./blocks/button/_saved/button_saved.css);
 @import url(./blocks/button/_theme/button_theme_delete.css);
 @import url(./blocks/auth-form/__input-error/auth-form__input-error.css);
+@import url(./blocks/tooltip/tooltip.css);
+@import url(./blocks/tooltip/__info/tooltip__info.css);
+@import url(./blocks/tooltip/__info/_error/tooltip__info_error.css);
+@import url(./blocks/tooltip/__info/_ok/tooltip__info_ok.css);
+@import url(./blocks/tooltip/_visible/tooltip_visible.css);

@@ -145,6 +145,14 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    if (isTooltipVisible) {
+      setTimeout(() => {
+        setIsTooltipVisible(false)
+      }, 1500)
+    }
+  }, [isTooltipVisible])
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
