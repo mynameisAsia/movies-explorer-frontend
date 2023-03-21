@@ -49,8 +49,14 @@ function App() {
         .then(() => {
           handleLogin({ email, password });
         })
+        .then((res) => {
+          setIsTooltipVisible(true);
+          setTooltipMessage({ status: 'ok', message: 'Регистрация успешна!' });
+        })
         .catch((err) => {
             console.log(err);
+            setIsTooltipVisible(true);
+            setTooltipMessage({ status: 'error', message: err.message || 'Что то пошло не так, попробуйте еще раз' });
         }
     )
   }
@@ -59,6 +65,8 @@ function App() {
       api.login(email, password)
           .then((res) => {
               if (res.token) {
+                  setIsTooltipVisible(true);
+                  setTooltipMessage({ status: 'ok', message: 'Вход выполнен!' });
                   setLoggedIn(true);
                   localStorage.setItem('jwt', res.token);
                   navigate('/movies');
@@ -66,6 +74,8 @@ function App() {
           })
           .catch((err) => {
               console.log(err);
+              setIsTooltipVisible(true);
+              setTooltipMessage({ status: 'error', message: err.message || 'Что то пошло не так, попробуйте еще раз' });
           }
       )
   }
@@ -87,14 +97,14 @@ function App() {
   function handleEditProfileClick (data) {
       api.updateUserInfo(data)
         .then((res) => {
-          setIsTooltipVisible(true)
-          setTooltipMessage({ status: 'ok', message: 'Информация обновлена!' })
+          setIsTooltipVisible(true);
+          setTooltipMessage({ status: 'ok', message: 'Информация обновлена!' });
           setCurrentUser(res);
         })
         .catch((err) => {
           console.log(err);
-          setIsTooltipVisible(true)
-          setTooltipMessage({ status: 'error', message: err.message || 'Что то пошло не так, попробуйте еще раз' })
+          setIsTooltipVisible(true);
+          setTooltipMessage({ status: 'error', message: err.message || 'Что то пошло не так, попробуйте еще раз' });
         });
   };
 
@@ -149,7 +159,7 @@ function App() {
     if (isTooltipVisible) {
       setTimeout(() => {
         setIsTooltipVisible(false)
-      }, 1500)
+      }, 3000)
     }
   }, [isTooltipVisible])
 
