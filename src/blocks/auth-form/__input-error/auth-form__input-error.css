@@ -1,0 +1,13 @@
+.auth-form__input-error {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #FF4062;
+    text-align: left;
+    box-sizing: border-box;
+    max-width: 396px;
+    margin-top: 10px;
+    min-height: 12px;
+}

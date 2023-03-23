@@ -2,7 +2,7 @@
     max-width: 520px;
     width: 100%;
     height: 100%;
-    padding: 29px 0 0;
+    padding: 0;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -14,10 +14,4 @@
     visibility: hidden;
     opacity: 0;
     transition: visibility 0.5s, opacity 0.3s ease-in 0s;
-}
-
-@media screen and (max-width: 431px) {
-    .popup {
-        padding-top: 20px;
-    }
 }

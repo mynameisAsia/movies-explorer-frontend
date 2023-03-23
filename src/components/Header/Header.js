@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.svg'
+import Navigation from "../Navigation/Navigation";
+import logo from '../../images/logo.svg';
 
-function Header () {
+function Header ({ loggedIn, isBurgerClicked, openMobileMenu}) {
 
     return (
-        <header className="header">
+        <>
+        {!loggedIn ? (<header className="header">
             <div className="content-wrapper">
                 <div className="header__wrapper">
                     <Link to='/' >
@@ -23,8 +25,9 @@ function Header () {
                     </div>
                 </div>
             </div>
-        </header>
-    )
+        </header>) : (<Navigation loggedIn={loggedIn} isBurgerClicked={isBurgerClicked} openMobileMenu={openMobileMenu} />)}
+        </>
+        )
 }
 
 export default Header;

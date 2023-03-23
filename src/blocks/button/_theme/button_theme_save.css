@@ -1,7 +1,10 @@
 .button_theme_save {
     height: 21px;
-    background-color: #F9F9F9;
+    width: 72px;
+    background-image: url(../../../images/save-button.png);
     border-radius: 30px;
+    background-position: center;
+    background-size: cover;
     text-align: center;
     font-size: 10px;
     line-height: 0.9;
@@ -10,9 +13,4 @@
     top: 14px;
     right: 14px;
     z-index: 1;
-    transition: opacity 0.2s ease-in-out;
-}
-
-.button_theme_save:hover {
-    opacity: 0.6;
 }

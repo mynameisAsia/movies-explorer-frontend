@@ -1,12 +1,12 @@
 .popup__links {
     list-style: none;
-    margin: 110px 0 0;
+    margin: 159px 0 0;
     padding: 0;
     text-align: center;
 }
 
 @media screen and (max-width: 431px) {
     .popup__links {
-        margin-top: 105px;
+        margin-top: 144px;
     }
 }

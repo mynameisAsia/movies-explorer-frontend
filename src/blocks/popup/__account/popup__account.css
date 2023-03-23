@@ -16,6 +16,7 @@
 }
 @media screen and (max-width: 431px) {
     .popup__account {
+        margin-bottom: 48px;
         font-size: 14px;
     }
 }

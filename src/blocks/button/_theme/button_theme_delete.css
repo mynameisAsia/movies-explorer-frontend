@@ -1,0 +1,13 @@
+.button_theme_delete {
+    background-image: url(../../../images/delete_film.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    top: 14px;
+    right: 14px;
+    z-index: 1;
+}

@@ -2,5 +2,7 @@
     display: flex;
     width: 22px;
     height: 20.5px;
-    padding-right: 18px;
+    position: absolute;
+    top: 29px;
+    right: 10px;
 }

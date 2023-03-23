@@ -1,6 +1,6 @@
 import React from "react";
 import Portfolio from "../Portfolio/Portfolio";
-import student from '../../images/student.png';
+import student from '../../images/student.jpg';
 
 function AboutMe () {
     return (
@@ -9,10 +9,9 @@ function AboutMe () {
                 <h2 className="section-title">Студент</h2>
                 <div className="student__wrapper">
                     <div>
-                        <h3 className="student__name">Виталий</h3>
-                        <p className="student__paragraph">Фронтенд-разработчик, 30 лет.</p>
-                        <p className="student__description">Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена 
-    и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
+                        <h3 className="student__name">Азия</h3>
+                        <p className="student__paragraph">Фронтенд-разработчик, 23 года.</p>
+                        <p className="student__description">Я живу в Москве, закончила факультет лингвистики НГУ. Я люблю слушать музыку, а ещё увлекаюсь спортом. Недавно начала кодить. С лета 2022 года работаю в IT компании специалистом клиентской поддержки.</p>
                         <p className="student__github">Github</p>
                     </div>
                     <img className="student__pic" src={student} alt="Фотография студента" />

@@ -9,11 +9,6 @@
     font-weight: 500;
     color: #FFFFFF;
     border-radius: 3px;
-    transition: opacity 0.2s ease-in-out;
-}
-
-.button_theme_register:hover {
-    opacity: 0.6;
 }
 
 @media screen and (max-width: 431px) {

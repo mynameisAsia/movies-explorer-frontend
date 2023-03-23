@@ -2,11 +2,6 @@
     border: none;
     background: none;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
     padding: 0 0 15px 0;
     height: 44px;
-}
-
-.button_theme_search:hover {
-    opacity: 0.6;
 }

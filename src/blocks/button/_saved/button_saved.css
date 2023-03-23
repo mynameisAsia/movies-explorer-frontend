@@ -1,0 +1,17 @@
+.button_saved {
+    background-image: url(../../../images/saved.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    top: 14px;
+    right: 14px;
+    z-index: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.button_saved:hover {
+    opacity: 0.6;
+}
